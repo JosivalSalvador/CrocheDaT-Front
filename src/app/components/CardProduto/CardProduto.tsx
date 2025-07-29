@@ -33,7 +33,7 @@ export default function CardProduto({
           <h5 className="card-title fw-bold">{produto.name}</h5>
 
           <h6 className="text-success fw-bold mb-2">
-            R$ {produto.price.toFixed(2)}
+            R$ {produto.price}
           </h6>
 
           <small className="text-muted d-block mb-3">

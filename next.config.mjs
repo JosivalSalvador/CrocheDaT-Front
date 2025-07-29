@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "ranekapi.origamid.dev",
+        hostname: "res.cloudinary.com",
       },
     ],
   },
