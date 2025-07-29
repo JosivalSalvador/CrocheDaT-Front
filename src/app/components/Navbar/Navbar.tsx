@@ -1,9 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useState } from "react";
+import ListagemCarrinho from "../ListagemCarrinho/ListagemCarrinho";
 
 export default function Navbar() {
+  const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
+
   return (
     <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
       <div className="container-fluid">
@@ -21,35 +24,35 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarCollapse">
-          <ul className="navbar-nav me-auto mb-2 mb-md-0 ">
+          <ul className="navbar-nav me-auto mb-2 mb-md-0">
             <li className="nav-item">
               <Link className="nav-link" href="/">
                 Início
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/favoritos">
-                Lista de Favoritos
+              <Link className="nav-link" href="/sobre">
+                Sobre
               </Link>
             </li>
           </ul>
 
-          {emailUsuario ? (
-            <div className="d-flex align-items-center gap-2">
-              <span className="me-2">{emailUsuario}</span>
-              <button type="button" onClick={logout} className="btn btn-secondary">
-                Sair
-              </button>
-            </div>
-          ) : (
-            <Link className="nav-link" href="/login">
-              <button type="button" className="btn btn-outline-info">
-                Login
-              </button>
-            </Link>
-          )}
-
+          <div className="dropdown">
+            <button
+              className="btn btn-outline-primary dropdown-toggle"
+              type="button"
+              onClick={() => setMostrarCarrinho(!mostrarCarrinho)}
+            >
+              Carrinho
+            </button>
+            {mostrarCarrinho && (
+              <div className="dropdown-menu show p-3" style={{ minWidth: "300px" }}>
+                <ListagemCarrinho />
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </nav>

@@ -1,7 +1,7 @@
-import { favoritosApi } from ".";
+import { produtosApi } from ".";
 
 
-export async function getListaFavorito(): Promise<Produto[]> {
-    return await favoritosApi.get("/products").then((response)=> response.data)
+export async function getListaProduto(): Promise<Produto[]> {
+    return await produtosApi.get("/products").then((response)=> response.data)
 }
 

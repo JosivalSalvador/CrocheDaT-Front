@@ -1,6 +1,5 @@
-import { calculaValorComPorcentagemDeDesconto } from "@/app/helpers";
 import Image from "next/image";
-import { useFavoritosContext } from "../favoritosProvider/favoritosProvider";
+import { useCarrinhoContext } from "../carrinhoProvider/carrinhoProvider";
 
 interface CardProdutoProps {
   produto: Produto;
@@ -13,15 +12,14 @@ export default function CardProduto({
   mostrarImagem = true,
   mostrarBotao = true,
 }: CardProdutoProps) {
+  const { adicionarAoCarrinho, verificaCarrinho } = useCarrinhoContext();
 
-  const { adicionarAosFavoritos, verificaFavorito, isAddFavoritoPending } = useFavoritosContext(); 
-
-  const ehFavorito = verificaFavorito(produto)
+  const estaNoCarrinho = verificaCarrinho(produto);
 
   return (
     <div className="col">
       <div className="card shadow-sm h-100">
-        {mostrarImagem ? (
+        {mostrarImagem && produto.photos.length > 0 && (
           <Image
             src={produto.photos[0].src}
             className="card-img-top"
@@ -29,36 +27,33 @@ export default function CardProduto({
             width={150}
             height={180}
           />
-        ) : null}
+        )}
 
-        <div className="card-body bg-ligth">
-          <span className="badge text-bg-success text-white mb-2 ">
-            {produto.desconto}% de desconto
-          </span>
-
+        <div className="card-body bg-light">
           <h5 className="card-title fw-bold">{produto.name}</h5>
-          <span className="text-secondary">De R$ {produto.price}</span>
-          <h5 className="card-text">
-            Por R${" "}
-            {calculaValorComPorcentagemDeDesconto(
-              Number(produto.price),
-              produto.desconto
-            )}
-          </h5>
-          {mostrarBotao ? (
+
+          <h6 className="text-success fw-bold mb-2">
+            R$ {produto.price.toFixed(2)}
+          </h6>
+
+          <small className="text-muted d-block mb-3">
+            {produto.category.name}
+          </small>
+
+          {mostrarBotao && (
             <button
               className={
-                ehFavorito
+                estaNoCarrinho
                   ? "btn btn-success d-block w-100"
-                  : "btn btn-secondary d-block w-100"
+                  : "btn btn-outline-primary d-block w-100"
               }
               type="button"
-              onClick={() => adicionarAosFavoritos(produto)}
-              disabled={ehFavorito || isAddFavoritoPending}
+              onClick={() => adicionarAoCarrinho(produto)}
+              disabled={estaNoCarrinho}
             >
-              {ehFavorito ? "Favoritado": isAddFavoritoPending ? "Adicionando...": "Favoritar"}
+              {estaNoCarrinho ? "No carrinho" : "Adicionar ao carrinho"}
             </button>
-          ) : null}
+          )}
         </div>
       </div>
     </div>

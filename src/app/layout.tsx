@@ -4,8 +4,9 @@ import BootstrapClient from "./components/BootstrapClient";
 import "react-toastify/dist/ReactToastify.css"
 import { ToastContainer } from "react-toastify";
 import Navbar from "./components/Navbar/Navbar";
-import { FavoritosProvider } from "./components/favoritosProvider/favoritosProvider";
 import { ReactQueryClientProvider } from './components/ReactQueryClient/ReactQueryClient';
+import { ProdutosProvider } from './components/produtosProvider/produtosProvider';
+import { CarrinhoProvider } from './components/carrinhoProvider/carrinhoProvider';
 
 export const metadata: Metadata = {
   title: "WA Loja",
@@ -20,12 +21,14 @@ export default function RootLayout({
     <html lang="pt-br">
       <body>
         <ReactQueryClientProvider>
-            <FavoritosProvider>
-              <Navbar />
-              {children}
-              <BootstrapClient />
-              <ToastContainer />
-            </FavoritosProvider>
+            <ProdutosProvider>
+              <CarrinhoProvider>
+                <Navbar />
+                {children}
+                <BootstrapClient />
+                <ToastContainer />
+              </CarrinhoProvider>
+            </ProdutosProvider>
         </ReactQueryClientProvider>
       </body>
     </html>
