@@ -25,7 +25,7 @@ export default function CardProduto({
             className="card-img-top"
             alt={produto.photos[0].titulo}
             width={150}
-            height={200}
+            height={400}
           />
         )}
 
