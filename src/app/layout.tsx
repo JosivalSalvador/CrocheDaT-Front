@@ -11,7 +11,7 @@ import { CarrinhoProvider } from './components/carrinhoProvider/carrinhoProvider
 export const metadata: Metadata = {
   title: "Crochê da T",
   icons: [
-    { url: "/public/icone1.jpeg", sizes: "32x32", type: "image/jpeg" },
+    { url: "/icone1.jpeg", sizes: "32x32", type: "image/jpeg" },
   ],
 };
 
