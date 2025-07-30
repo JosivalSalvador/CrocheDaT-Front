@@ -10,6 +10,9 @@ import { CarrinhoProvider } from './components/carrinhoProvider/carrinhoProvider
 
 export const metadata: Metadata = {
   title: "Crochê da T",
+  icons: {
+    icon: "/public/icone1.jpeg",
+  },
 };
 
 export default function RootLayout({
