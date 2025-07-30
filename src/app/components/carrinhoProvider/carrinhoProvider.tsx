@@ -48,21 +48,29 @@ export function CarrinhoProvider({ children }: { children: ReactNode }) {
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(carrinho));
   }, [carrinho]);
 
+  
   const adicionarAoCarrinho = (produto: Produto) => {
+    const jaExiste = carrinho.some((item) => item.id === produto.id);
+
     setCarrinho((prev) => {
       const index = prev.findIndex((item) => item.id === produto.id);
-
       if (index !== -1) {
         const atualizado = [...prev];
-        atualizado[index].quantidade += 1;
-        toast.info("Quantidade aumentada no carrinho.");
+        atualizado[index] = {
+          ...atualizado[index],
+          quantidade: atualizado[index].quantidade + 1,
+        };
         return atualizado;
       }
-
-      toast.success("Produto adicionado ao carrinho!");
       return [...prev, { ...produto, quantidade: 1 }];
     });
+
+    jaExiste
+      ? toast.info("Quantidade aumentada no carrinho.")
+      : toast.success("Produto adicionado ao carrinho!");
   };
+
+
 
   const removerDoCarrinho = async (id: string) => {
     setIsRemocaoPendente(true);

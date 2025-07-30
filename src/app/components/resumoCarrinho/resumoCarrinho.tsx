@@ -16,7 +16,7 @@ export default function ResumoCarrinho() {
         Itens no carrinho: <strong>{quantidadeTotal}</strong>
       </small>
       <small className="text-muted">
-        Valor total: <strong>R$ {valorTotalCarrinho().toFixed(2)}</strong>
+        Valor total: <strong>R$ {valorTotalCarrinho()}</strong>
       </small>
     </div>
   );

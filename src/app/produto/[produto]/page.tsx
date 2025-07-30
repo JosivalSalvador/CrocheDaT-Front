@@ -38,7 +38,7 @@ export default function Produto() {
             </div>
 
             <p className="card-text fw-medium">
-              Valor: R$ {produto.price.toFixed(2)}
+              Valor: R$ {produto.price}
             </p>
             <p className="card-text fw-medium">
               Descrição: {produto.description || "Sem descrição"}

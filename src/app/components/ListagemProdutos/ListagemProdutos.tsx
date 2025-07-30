@@ -15,11 +15,9 @@ export default function ListagemProdutos() {
   return (
     <div className="row row-cols-1 row-cols-lg-2">
       <div className="col-lg-9">
-        <h5 className="mb-3">Produtos disponíveis:</h5>
-
         {Object.entries(produtosPorCategoria).map(([categoria, lista]) => (
           <div key={categoria} className="mb-4">
-            <h6 className="fw-bold mb-3">{categoria}</h6>
+            <h3 className="fw-bold mb-3">{categoria}</h3>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
               {lista.map((produto) => (
                 <CardProduto key={produto.id} produto={produto} />

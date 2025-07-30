@@ -12,6 +12,8 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
     isRemocaoPendente,
   } = useCarrinhoContext();
 
+  const { quantidade, ...produto } = itemCarrinho;
+
   return (
     <div className="d-flex align-items-center">
       {/* Imagem do produto */}
@@ -29,8 +31,8 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
         <small className="text-muted d-block">{itemCarrinho.description}</small>
         <div className="mt-2">
           <small className="fw-bold">
-            R$ {itemCarrinho.price.toFixed(2)} x {itemCarrinho.quantidade} ={" "}
-            R$ {(itemCarrinho.price * itemCarrinho.quantidade).toFixed(2)}
+            R$ {itemCarrinho.price} x {itemCarrinho.quantidade} ={" "}
+            R$ {(itemCarrinho.price * itemCarrinho.quantidade)}
           </small>
         </div>
 
@@ -45,7 +47,7 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
           </button>
           <span className="fw-bold">{itemCarrinho.quantidade}</span>
           <button
-            onClick={() => adicionarAoCarrinho(itemCarrinho)}
+            onClick={() => adicionarAoCarrinho(produto)}
             className="btn btn-outline-secondary btn-sm"
           >
             +
