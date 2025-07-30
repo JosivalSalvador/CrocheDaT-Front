@@ -9,7 +9,7 @@ import { ProdutosProvider } from './components/produtosProvider/produtosProvider
 import { CarrinhoProvider } from './components/carrinhoProvider/carrinhoProvider';
 
 export const metadata: Metadata = {
-  title: "WA Loja",
+  title: "Crochê da T",
 };
 
 export default function RootLayout({
