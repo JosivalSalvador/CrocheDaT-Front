@@ -18,7 +18,7 @@ export default function CardProduto({
 
   return (
     <div className="col">
-      <div className="card shadow-sm h-100">
+      <div className="card shadow-sm h-50">
         {mostrarImagem && produto.photos.length > 0 && (
           <Image
             src={produto.photos[0].src}
