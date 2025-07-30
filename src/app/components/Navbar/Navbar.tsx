@@ -1,11 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import ListagemCarrinho from "../ListagemCarrinho/ListagemCarrinho";
 
 export default function Navbar() {
-  const [mostrarCarrinho, setMostrarCarrinho] = useState(false);
 
   return (
     <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
@@ -33,26 +30,16 @@ export default function Navbar() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link className="nav-link" href="/carrinho">
+                Carrinho
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="nav-link" href="/sobre">
                 Sobre
               </Link>
             </li>
           </ul>
-
-          <div className="dropdown">
-            <button
-              className="btn btn-outline-primary dropdown-toggle"
-              type="button"
-              onClick={() => setMostrarCarrinho(!mostrarCarrinho)}
-            >
-              Carrinho
-            </button>
-            {mostrarCarrinho && (
-              <div className="dropdown-menu show p-3" style={{ minWidth: "300px" }}>
-                <ListagemCarrinho />
-              </div>
-            )}
-          </div>
         </div>
       </div>
     </nav>
