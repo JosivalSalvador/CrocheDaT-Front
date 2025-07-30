@@ -11,7 +11,7 @@ export default function Navbar() {
     <nav className="navbar navbar-expand-md bg-light border-bottom border-body sticky-top">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
-          Loja WA
+          Crochê da T
         </a>
         <button
           className="navbar-toggler"
