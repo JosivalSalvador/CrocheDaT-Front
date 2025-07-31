@@ -13,12 +13,9 @@ export default function App() {
       return;
     }
 
-    const mensagem = carrinho
-      .map(
-        (item) =>
-          `• ${item.name} (Qtd: ${item.quantidade}) - R$ ${item.price}`
-      )
-      .join("\n");
+    const mensagem = carrinho.map(
+      (item) =>
+        `• ${item.name} (Qtd: ${item.quantidade}) - R$ ${item.price}`).join("\n");
 
     const textoFinal = `Olá! Gostaria de finalizar o pedido com os seguintes itens:\n\n${mensagem}`;
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoFinal)}`;

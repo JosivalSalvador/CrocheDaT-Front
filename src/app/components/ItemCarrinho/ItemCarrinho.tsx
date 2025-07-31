@@ -28,7 +28,7 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
       {/* Detalhes do produto */}
       <div className="flex-grow-1 ms-3">
         <h6 className="mb-1">{itemCarrinho.name}</h6>
-        <small className="text-muted d-block">{itemCarrinho.description}</small>
+        <small className="text-muted d-block">{itemCarrinho.category.name}</small>
         <div className="mt-2">
           <small className="fw-bold">
             R$ {itemCarrinho.price} x {itemCarrinho.quantidade} ={" "}
