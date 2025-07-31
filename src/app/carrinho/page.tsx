@@ -43,11 +43,11 @@ export default function App() {
 
         {/* Botão mais destacado */}
         <button
-          className="btn btn-lg btn-success mt-4 w-100 fw-bold shadow"
+          className="btn btn-lg btn-outline-success mt-4 w-100 fw-bold shadow"
           onClick={abrirModal}
         >
           <i className="bi bi-whatsapp me-2"></i>
-          Enviar pedido pelo WhatsApp
+          Encomendar
         </button>
       </div>
 
@@ -56,8 +56,8 @@ export default function App() {
         <div className="modal show fade d-block" tabIndex={-1}>
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Finalizar pedido</h5>
+              <div className="modal-header bg-danger-subtle">
+                <h5 className="modal-title">Confirmar pedido</h5>
                 <button
                   type="button"
                   className="btn-close"
@@ -71,23 +71,23 @@ export default function App() {
                   value={formaPagamento}
                   onChange={(e) => setFormaPagamento(e.target.value)}
                 >
-                  <option value="">Selecione...</option>
                   <option value="Pix">Pix</option>
-                  <option value="Cartão de Crédito">Cartão de Crédito</option>
+                  <option value="Cartão de Crédito">Cartão de Crédito (Maquininha)</option>
+                  <option value="Cartão de Débito">Cartão de Débito (Maquininha)</option>
                   <option value="Dinheiro">Dinheiro</option>
                 </select>
               </div>
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="btn btn-outline-danger"
                   onClick={() => setShowModal(false)}
                 >
                   Cancelar
                 </button>
                 <button
                   type="button"
-                  className="btn btn-success"
+                  className="btn btn-outline-success"
                   onClick={enviarWhatsApp}
                 >
                   Confirmar e Enviar
