@@ -21,7 +21,7 @@ export default function App() {
       .join("\n");
 
     const textoFinal = `Olá! Gostaria de finalizar o pedido com os seguintes itens:\n\n${mensagem}`;
-    const url = `whatsapp://send?phone=${numeroWhatsApp}&text=${encodeURIComponent(textoFinal)}`;
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoFinal)}`;
     window.open(url, "_blank");
   };
 
@@ -30,7 +30,7 @@ export default function App() {
       <div className="container p-5">
         <ListagemCarrinho />
         <button
-          className="btn btn-success mt-4 align-content-center"
+          className="btn btn-success mt-4"
           onClick={enviarWhatsApp}
         >
           Enviar pedido pelo WhatsApp
