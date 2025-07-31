@@ -39,6 +39,10 @@ export default function AboutPage() {
                   A loja é <strong>100% artesanal</strong> e, quase sempre, sou só eu na produção. Por isso, agradeço de
                   coração pela paciência com os prazos. Cada peça leva tempo porque leva cuidado.
                 </p>
+                <p className="mb-3 fs-5">
+                  Eu trabalho da seguinte maneira pessoal, recebo <strong>50% de entrada do valor total da compra</strong>, para assim ter uma garantia para vocês e para mim, o restante do valor é pago no momento que eu aviso que sua encomenda está finalizada.
+                </p>
+
                 <p className="mb-4 fs-5">
                   Me segue nas redes sociais, vai que o seu pedido vira destaque nos stories? 😄
                 </p>

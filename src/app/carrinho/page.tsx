@@ -5,7 +5,7 @@ import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
 import { useCarrinhoContext } from "../components/carrinhoProvider/carrinhoProvider";
 
 export default function App() {
-  const { carrinho } = useCarrinhoContext();
+  const { carrinho, valorTotalCarrinho } = useCarrinhoContext();
   const numeroWhatsApp = "5592984902857";
 
   const [formaPagamento, setFormaPagamento] = useState("");
@@ -30,10 +30,16 @@ export default function App() {
         `• ${item.name} (Qtd: ${item.quantidade}) - R$ ${item.price}`
     ).join("\n");
 
-    const textoFinal = `Olá! Gostaria de finalizar o pedido com os seguintes itens:\n\n${mensagem}\n\nForma de pagamento: ${formaPagamento}`;
+    
+    const total = valorTotalCarrinho()
+      .toFixed(2)
+      .replace('.', ',');
+
+    const textoFinal = `Olá! Gostaria de finalizar o pedido com os seguintes itens:\n\n${mensagem}\n\n*Valor total: R$ ${total}*\nForma de pagamento: ${formaPagamento}`;
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoFinal)}`;
     window.open(url, "_blank");
     setShowModal(false);
+    
   };
 
   return (
