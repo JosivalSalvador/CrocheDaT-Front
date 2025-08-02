@@ -10,7 +10,7 @@ export default function App() {
       <section
         className="d-flex align-items-center justify-content-center text-center position-relative mb-5 px-3"
         style={{
-          minHeight: "60vh", // melhor que 50vh em mobile
+          minHeight: "47vh", // melhor que 50vh em mobile
           backgroundImage: "linear-gradient(135deg, #fbe6d4, #fdebd2, #f8d9c4)",
           backgroundSize: "cover",
           backgroundPosition: "center",
