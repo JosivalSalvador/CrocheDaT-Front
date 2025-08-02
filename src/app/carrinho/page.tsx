@@ -77,7 +77,7 @@ export default function App() {
                   value={formaPagamento}
                   onChange={(e) => setFormaPagamento(e.target.value)}
                 >
-                  <option value="">...</option>
+                  <option value="">Selecione uma forma de pagamento...</option>
                   <option value="Pix">Pix</option>
                   <option value="Cartão de Crédito">Cartão de Crédito (Maquininha)</option>
                   <option value="Cartão de Débito">Cartão de Débito (Maquininha)</option>
