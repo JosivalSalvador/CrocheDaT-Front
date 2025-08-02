@@ -23,7 +23,7 @@ export default function CardProduto({
 
   return (
     <div className="col">
-      <div className="card h-100 border-0 shadow-sm rounded-3">
+      <div className="card h-100 border-1 shadow-lg rounded-3">
         {mostrarImagem && produto.photos.length > 0 && (
           <div
             style={{ height: "350px", overflow: "hidden", cursor: "pointer" }}
@@ -40,7 +40,7 @@ export default function CardProduto({
           </div>
         )}
 
-        <div className="card-body bg-light d-flex flex-column justify-content-between">
+        <div className="card-body d-flex flex-column justify-content-between">
           <div>
             <h5 className="card-title fw-semibold text-truncate" title={produto.name}>
               {produto.name}
