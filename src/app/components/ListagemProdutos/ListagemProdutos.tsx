@@ -11,6 +11,7 @@ export default function ListagemProdutos() {
     return acc;
   }, {} as Record<string, typeof produtos>);
 
+
   return (
     <div className="container py-4">
       <div className="row">
@@ -40,7 +41,15 @@ export default function ListagemProdutos() {
             </>
           ) : (
             Object.entries(produtosPorCategoria).map(([categoria, lista]) => (
-              <div key={categoria} className="mb-4">
+              <div
+                key={categoria}
+                className="mb-4 p-4 rounded"
+                style={{
+                  backgroundColor: "#fffdfb",
+                  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.06)",
+                  border: "1px solid #e7cfa3" // opcional, pode remover se quiser mais clean
+                }}
+              >
                 <h3 className="fw-bold mb-3">{categoria}</h3>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
                   {lista.map((produto) => (
