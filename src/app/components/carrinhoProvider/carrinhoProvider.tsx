@@ -16,7 +16,7 @@ interface ProdutoCarrinho extends Produto {
 type CarrinhoContextType = {
   carrinho: ProdutoCarrinho[];
   adicionarAoCarrinho: (produto: Produto) => void;
-  removerDoCarrinho: (id: string) => Promise<void>;
+  removerDoCarrinho: (id: string) => void;
   verificaCarrinho: (produto: Produto) => boolean;
   valorTotalCarrinho: () => number;
   isRemocaoPendente: boolean;
@@ -72,26 +72,29 @@ export function CarrinhoProvider({ children }: { children: ReactNode }) {
 
 
 
-  const removerDoCarrinho = async (id: string) => {
-    setIsRemocaoPendente(true);
-    await new Promise((resolve) => setTimeout(resolve, 300)); // simula async
-    setCarrinho((prev) => {
-      const item = prev.find((produto) => produto.id === id);
-      if (!item) return prev;
+  const removerDoCarrinho = (id: string) => {
+    
+    const item = carrinho.find((produto) => produto.id === id);
 
-      if (item.quantidade > 1) {
-        return prev.map((produto) =>
+    if (!item) return;
+
+    if (item.quantidade > 1) {
+      toast.info("Quantidade reduzida no carrinho.");
+      setCarrinho((prev) =>
+        prev.map((produto) =>
           produto.id === id
             ? { ...produto, quantidade: produto.quantidade - 1 }
             : produto
-        );
-      }
-
+        )
+      );
+    } else {
       toast.success("Produto removido do carrinho.");
-      return prev.filter((produto) => produto.id !== id);
-    });
-    setIsRemocaoPendente(false);
+      setCarrinho((prev) =>
+        prev.filter((produto) => produto.id !== id)
+      );
+    }
   };
+
 
   const verificaCarrinho = (produto: Produto) => {
     return carrinho.some((item) => item.id === produto.id);
