@@ -12,7 +12,6 @@ export default function ListagemProdutos() {
     return acc;
   }, {} as Record<string, typeof produtos>);
 
-  // Um objeto de refs por categoria
   const scrollRefs = useRef<Record<string, HTMLDivElement>>({});
 
   const scroll = (categoria: string, direction: "left" | "right") => {
@@ -30,7 +29,6 @@ export default function ListagemProdutos() {
       <div className="row">
         <div className="col-lg-12">
           {isLoading ? (
-            // loading skeleton...
             <>
               {[...Array(2)].map((_, idx) => (
                 <div key={idx} className="mb-4">
@@ -41,7 +39,7 @@ export default function ListagemProdutos() {
                     {[...Array(4)].map((_, i) => (
                       <div key={i} className="col">
                         <div className="card placeholder-glow">
-                          <div className="card-img-top placeholder" style={{ height: "150px" }}></div>
+                          <div className="card-img-top placeholder" style={{ aspectRatio: "4/3" }}></div>
                           <div className="card-body">
                             <h5 className="card-title placeholder col-6"></h5>
                             <p className="card-text placeholder col-8"></p>
@@ -73,8 +71,8 @@ export default function ListagemProdutos() {
                     className="btn btn-light"
                     style={{
                       position: "absolute",
-                      top: "220px",
-                      left: "-20px",
+                      top: "50%",
+                      left: "-18px",
                       transform: "translateY(-50%)",
                       zIndex: 1,
                       borderRadius: "50%",
@@ -94,25 +92,24 @@ export default function ListagemProdutos() {
                     ref={(el) => {
                       if (el) scrollRefs.current[categoria] = el;
                     }}
-
-                    className="d-flex px-3 py-3"
+                    className="d-flex px-2 py-3"
                     style={{
                       overflowX: "auto",
                       overflowY: "hidden",
                       scrollBehavior: "smooth",
                       WebkitOverflowScrolling: "touch",
-                      gap: "1.5rem",
-                      scrollbarWidth: "none", // Firefox
-                      msOverflowStyle: "none", // IE/Edge
+                      gap: "1rem",
+                      scrollbarWidth: "none",
+                      msOverflowStyle: "none",
                     }}
                   >
                     {lista.map((produto) => (
                       <div
                         key={produto.id}
-                        className="bg-white shadow rounded border flex-shrink-0"
+                        className="bg-white shadow-sm rounded border flex-shrink-0"
                         style={{
-                          width: "min(90vw, 250px)",
-                          minWidth: "220px",
+                          flex: "0 0 auto",
+                          width: "clamp(180px, 40vw, 240px)", // largura fluida entre 180px e 240px
                           transition: "transform 0.2s",
                         }}
                         onMouseEnter={(e) => {
@@ -133,8 +130,8 @@ export default function ListagemProdutos() {
                     className="btn btn-light"
                     style={{
                       position: "absolute",
-                      top: "220px",
-                      right: "-20px",
+                      top: "50%",
+                      right: "-18px",
                       transform: "translateY(-50%)",
                       zIndex: 1,
                       borderRadius: "50%",

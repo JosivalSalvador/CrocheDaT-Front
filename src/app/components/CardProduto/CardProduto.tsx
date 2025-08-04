@@ -23,26 +23,34 @@ export default function CardProduto({
 
   return (
     <div className="col">
-      <div className="card h-100 border-1 shadow-lg rounded-3">
+      <div className="card h-100 border-1 shadow-sm rounded-3 overflow-hidden">
         {mostrarImagem && produto.photos.length > 0 && (
           <div
-            style={{ height: "350px", overflow: "hidden", cursor: "pointer" }}
+            style={{
+              position: "relative",
+              width: "100%",
+              aspectRatio: "4 / 5", // de 4/3 para 1:1 (quadrado, imagem maior)
+              cursor: "pointer",
+            }}
             onClick={() => verDetalhesProduto(produto.id)}
           >
             <Image
               src={produto.photos[0].src}
               alt={produto.photos[0].titulo}
-              width={400}
-              height={200}
-              className="w-100"
-              style={{ objectFit: "cover", height: "100%" }}
+              fill
+              className="w-100 h-100"
+              style={{ objectFit: "cover" }}
             />
           </div>
+
         )}
 
         <div className="card-body d-flex flex-column justify-content-between">
           <div>
-            <h5 className="card-title fw-semibold text-truncate" title={produto.name}>
+            <h5
+              className="card-title fw-semibold text-truncate"
+              title={produto.name}
+            >
               {produto.name}
             </h5>
             <h6 className="text-success fw-bold mb-3">
@@ -61,7 +69,11 @@ export default function CardProduto({
               onClick={() => adicionarAoCarrinho(produto)}
               disabled={estaNoCarrinho}
             >
-              <i className={`bi ${estaNoCarrinho ? "bi-check-circle" : "bi-cart"} me-2`}></i>
+              <i
+                className={`bi ${
+                  estaNoCarrinho ? "bi-check-circle" : "bi-cart"
+                } me-2`}
+              ></i>
               {estaNoCarrinho ? "No carrinho" : "Adicionar ao carrinho"}
             </button>
           )}
