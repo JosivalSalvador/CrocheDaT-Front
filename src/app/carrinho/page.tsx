@@ -3,6 +3,7 @@
 import { useState } from "react";
 import ListagemCarrinho from "../components/ListagemCarrinho/ListagemCarrinho";
 import { useCarrinhoContext } from "../components/carrinhoProvider/carrinhoProvider";
+import { toast } from "react-toastify";
 
 export default function App() {
   const { carrinho, valorTotalCarrinho } = useCarrinhoContext();
@@ -13,7 +14,7 @@ export default function App() {
 
   const abrirModal = () => {
     if (carrinho.length === 0) {
-      alert("Seu carrinho está vazio!");
+      toast.warn("Seu carrinho está vazio!");
       return;
     }
     setShowModal(true);
@@ -21,7 +22,7 @@ export default function App() {
 
   const enviarWhatsApp = () => {
     if (!formaPagamento) {
-      alert("Escolha uma forma de pagamento!");
+      toast.error("Escolha uma forma de pagamento!");
       return;
     }
 
