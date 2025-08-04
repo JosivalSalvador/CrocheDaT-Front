@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   return (
@@ -10,7 +11,15 @@ export default function Navbar() {
     >
       <div className="container-fluid">
         <a href="/" className="navbar-brand d-flex align-items-center gap-2 me-auto">
-          <span className="fs-3">🧶</span>
+          <Image
+            src="/icone.png"
+            alt="Ícone"
+            width={32}
+            height={32}
+            className="align-middle"
+            priority
+          />
+
           <span className="fs-4 fw-bold text-dark fst-italic">Crochê da T</span>
         </a>
         <button

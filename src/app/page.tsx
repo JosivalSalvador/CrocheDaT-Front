@@ -26,7 +26,8 @@ export default function App() {
         ></div>
         <div className="position-relative z-1 container py-4">
           <h1 className="fw-bold mb-3 fs-1 fs-md-1 fs-lg-display-4">
-            ✨ Crochê para brilhar nas festas de fim de ano
+            <i className="bi bi-stars me-2" style={{ color: "#FFD700" }}></i>
+            Crochê para brilhar nas festas de fim de ano
           </h1>
           <p className="lead mb-0 fs-6 fs-md-5">
             Amigo secreto, ceia em família ou virada do ano, nossas peças artesanais
@@ -42,7 +43,8 @@ export default function App() {
           <div className="mb-5 text-center text-md-start">
             <h2 className="display-6 fw-bold mb-3">
               <span className="px-4 py-2 rounded-pill bg-warning-subtle text-dark shadow-sm">
-                ✨ Produtos em destaque para as festas
+                <i className="bi bi-stars me-2" style={{ color: "#FFD700" }}></i>
+                Produtos em destaque para as festas
               </span>
             </h2>
           </div>
