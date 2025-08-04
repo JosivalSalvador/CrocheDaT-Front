@@ -1,5 +1,6 @@
 import CardProduto from "../CardProduto/CardProduto";
 import { useProdutosContext } from "../produtosProvider/produtosProvider";
+import { useRef } from "react";
 
 export default function ListagemProdutos() {
   const { produtos, isLoading } = useProdutosContext();
@@ -11,12 +12,25 @@ export default function ListagemProdutos() {
     return acc;
   }, {} as Record<string, typeof produtos>);
 
+  // Um objeto de refs por categoria
+  const scrollRefs = useRef<Record<string, HTMLDivElement>>({});
+
+  const scroll = (categoria: string, direction: "left" | "right") => {
+    const ref = scrollRefs.current[categoria];
+    if (!ref) return;
+    const scrollAmount = ref.offsetWidth * 0.8;
+    ref.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div className="container py-4">
       <div className="row">
         <div className="col-lg-12">
           {isLoading ? (
+            // loading skeleton...
             <>
               {[...Array(2)].map((_, idx) => (
                 <div key={idx} className="mb-4">
@@ -47,14 +61,93 @@ export default function ListagemProdutos() {
                 style={{
                   backgroundColor: "#fffdfb",
                   boxShadow: "0 4px 12px rgba(0, 0, 0, 0.06)",
-                  border: "1px solid #e7cfa3" // opcional, pode remover se quiser mais clean
+                  border: "1px solid #e7cfa3",
                 }}
               >
                 <h3 className="fw-bold mb-3">{categoria}</h3>
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
-                  {lista.map((produto) => (
-                    <CardProduto key={produto.id} produto={produto} />
-                  ))}
+
+                <div style={{ position: "relative" }}>
+                  {/* Botão Esquerda */}
+                  <button
+                    onClick={() => scroll(categoria, "left")}
+                    className="btn btn-light"
+                    style={{
+                      position: "absolute",
+                      top: "220px",
+                      left: "-20px",
+                      transform: "translateY(-50%)",
+                      zIndex: 1,
+                      borderRadius: "50%",
+                      width: "36px",
+                      height: "36px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 0 4px rgba(0,0,0,0.1)",
+                    }}
+                  >
+                    <i className="bi bi-chevron-left"></i>
+                  </button>
+
+                  {/* Carrossel */}
+                  <div
+                    ref={(el) => {
+                      if (el) scrollRefs.current[categoria] = el;
+                    }}
+
+                    className="d-flex px-3 py-3"
+                    style={{
+                      overflowX: "auto",
+                      overflowY: "hidden",
+                      scrollBehavior: "smooth",
+                      WebkitOverflowScrolling: "touch",
+                      gap: "1.5rem",
+                      scrollbarWidth: "none", // Firefox
+                      msOverflowStyle: "none", // IE/Edge
+                    }}
+                  >
+                    {lista.map((produto) => (
+                      <div
+                        key={produto.id}
+                        className="bg-white shadow rounded border flex-shrink-0"
+                        style={{
+                          width: "min(90vw, 250px)",
+                          minWidth: "220px",
+                          transition: "transform 0.2s",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.transform = "scale(1.02)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      >
+                        <CardProduto produto={produto} />
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Botão Direita */}
+                  <button
+                    onClick={() => scroll(categoria, "right")}
+                    className="btn btn-light"
+                    style={{
+                      position: "absolute",
+                      top: "220px",
+                      right: "-20px",
+                      transform: "translateY(-50%)",
+                      zIndex: 1,
+                      borderRadius: "50%",
+                      width: "36px",
+                      height: "36px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 0 4px rgba(0,0,0,0.1)",
+                    }}
+                  >
+                    <i className="bi bi-chevron-right"></i>
+                  </button>
                 </div>
               </div>
             ))
