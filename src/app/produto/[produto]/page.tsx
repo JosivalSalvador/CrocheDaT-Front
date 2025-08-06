@@ -44,15 +44,27 @@ export default function Produto() {
               <div className="card-body">
                 <div className="row g-2">
                   {produto.photos.map((foto, index) => (
-                    <div className="col-6" key={index}>
-                      <Image
-                        src={foto.src}
-                        alt={foto.titulo}
-                        width={500}
-                        height={500}
-                        className="img-fluid rounded border"
-                      />
-                    </div>
+                  <div className="col-6" key={index}>
+  <div
+    style={{
+      position: "relative",
+      width: "100%",
+      aspectRatio: "2 / 3", // quadrado
+      overflow: "hidden",
+      borderRadius: "0.375rem", // equivalente a rounded do Bootstrap
+      border: "1px solid #dee2e6", // equivalente a .border
+    }}
+  >
+    <Image
+      src={foto.src}
+      alt={foto.titulo}
+      fill
+      sizes="(max-width: 768px) 100vw, 50vw"
+      style={{ objectFit: "cover" }}
+    />
+  </div>
+</div>
+
                   ))}
                 </div>
               </div>
