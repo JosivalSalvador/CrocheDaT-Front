@@ -80,8 +80,8 @@ export default function App() {
                 >
                   <option value="">Selecione uma forma de pagamento...</option>
                   <option value="Pix">Pix</option>
-                  <option value="Cartão de Crédito">Cartão de Crédito (Maquininha)</option>
-                  <option value="Cartão de Débito">Cartão de Débito (Maquininha)</option>
+                  <option value="Cartão de Crédito">Cartão de Crédito (Link de pagamento)</option>
+                  <option value="Cartão de Débito">Cartão de Débito (Link de pagamento)</option>
                   <option value="Dinheiro">Dinheiro</option>
                 </select>
               </div>
