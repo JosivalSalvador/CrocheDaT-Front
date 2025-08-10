@@ -91,7 +91,8 @@ export default function Produto() {
 
                 <ul className="list-group list-group-flush mb-3">
                   <li className="list-group-item">
-                    <strong>Descrição:</strong> {produto.description || "Sem descrição"}
+                    <strong>Descrição:</strong>{" "}
+                    <span dangerouslySetInnerHTML={{ __html: produto.description || "Sem descrição"}}/>
                   </li>
                   <li className="list-group-item">
                     <strong>Material:</strong> {produto.material}
