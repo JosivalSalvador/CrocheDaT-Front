@@ -103,6 +103,10 @@ export default function Produto() {
                   <li className="list-group-item">
                     <strong>Categoria:</strong> {produto.category?.name || "Sem categoria"}
                   </li>
+                  <li className="list-group-item">
+                    <strong>Observações:</strong>{" "}
+                    <span dangerouslySetInnerHTML={{ __html: produto.description || "Sem observações" }}/>
+                  </li>
                 </ul>
 
                 <div className="text-muted small mt-auto pt-3 border-top">
