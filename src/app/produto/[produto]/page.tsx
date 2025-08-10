@@ -91,7 +91,7 @@ export default function Produto() {
 
                 <ul className="list-group list-group-flush mb-3">
                   <li className="list-group-item">
-                    <strong>Descrição:</strong> {(produto.description || "").replace(/\([^)]*\)/g, "").trim() || "Sem descrição"}
+                    <strong>Descrição:</strong> {(produto.description || "").replace(/\[[^\]]*\]/g, "").trim() || "Sem descrição"}
                   </li>
                   <li className="list-group-item">
                     <strong>Material:</strong> {produto.material}
@@ -103,7 +103,7 @@ export default function Produto() {
                     <strong>Categoria:</strong> {produto.category?.name || "Sem categoria"}
                   </li>
                   <li className="list-group-item">
-                    <strong>Observações:</strong> {((produto.description || "").match(/\(([^)]*)\)/g) || []).map(obs => obs.replace(/[()]/g, "").trim()).join(". ") || "Sem observações"}
+                    <strong>Observações:</strong> {((produto.description || "").match(/\[([^\]]*)\]/g) || []).map(obs => obs.replace(/[\[\]]/g, "").trim()).join(". ") || "Sem observações"}
                   </li>
                 </ul>
 
