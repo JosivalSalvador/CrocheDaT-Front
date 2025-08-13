@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useCarrinhoContext } from "../carrinhoProvider/carrinhoProvider";
+import { useRouter } from "next/navigation";
 
 interface ItemCarrinhoProps {
   itemCarrinho: Produto & { quantidade: number };
@@ -13,6 +14,11 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
   } = useCarrinhoContext();
 
   const { quantidade, ...produto } = itemCarrinho;
+  const router = useRouter();
+
+  const verDetalhesProduto = (id: string) => {
+    router.push(`/produto/${id}`);
+  };
 
   return (
     <div className="d-flex align-items-center">
@@ -23,6 +29,7 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
         alt={itemCarrinho.photos[0].titulo}
         width={70}
         height={70}
+        onClick={() => verDetalhesProduto(produto.id)}
       />
 
       {/* Detalhes do produto */}
