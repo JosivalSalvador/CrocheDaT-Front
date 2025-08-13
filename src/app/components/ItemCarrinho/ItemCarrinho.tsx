@@ -29,6 +29,7 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
         alt={itemCarrinho.photos[0].titulo}
         width={70}
         height={70}
+        style={{ cursor: "pointer" }}
         onClick={() => verDetalhesProduto(produto.id)}
       />
 
