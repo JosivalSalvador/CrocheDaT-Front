@@ -38,7 +38,7 @@ export default function Navbar() {
             {[
               { href: "/", icon: "bi-house-door-fill", label: "Início" },
               { href: "/carrinho", icon: "bi-cart-fill", label: "Carrinho" },
-              { href: "/about", icon: "bi-info-circle-fill", label: "Sobre" },
+              { href: "/about", icon: "bi-bag-heart", label: "IInformações e Encomendas" },
             ].map((item, i) => (
               <li className="nav-item" key={i}>
                 <Link

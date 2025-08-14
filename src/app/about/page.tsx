@@ -20,7 +20,7 @@ export default function AboutPage() {
                     className="rounded-circle border border-3 border-danger-subtle shadow-sm"
                   />
                   <h2 className="mt-4 fw-bold text-danger">Crochê da T</h2>
-                  <p className="text-muted fst-italic">Feito à mão com amor 💕</p>
+                  <p className="text-muted fst-italic">Ponto a ponto, feito com dedicação <i className="bi bi-heart-fill text-danger"></i></p>
                 </div>
               </div>
 
@@ -37,14 +37,32 @@ export default function AboutPage() {
                 </p>
                 <p className="mb-3 fs-5">
                   A loja é <strong>100% artesanal</strong> e, quase sempre, sou só eu na produção. Por isso, agradeço de
-                  coração pela paciência com os prazos. Cada peça leva tempo porque leva cuidado.
-                </p>
-                <p className="mb-3 fs-5">
-                  Eu trabalho da seguinte maneira pessoal, recebo <strong>50% de entrada do valor total da compra</strong>, para assim ter uma garantia para vocês e para mim, o restante do valor é pago no momento que eu aviso que sua encomenda está finalizada.
+                  coração pela paciência com os prazos, cada peça leva tempo porque leva cuidado.
                 </p>
 
+                {/* Avisos importantes adaptados */}
+                <p className="mb-3 fs-5">
+                  <strong className="text-danger"><i className="bi bi-stars text-warning"></i> Avisos Importantes - Crochê da T <i className="bi bi-heart-fill"></i></strong>
+                </p>
+                <p className="mb-3 fs-5">
+                  Para garantir sua encomenda, solicito <strong>50% de entrada</strong> no ato do pedido. O restante é pago
+                  na finalização da peça.
+                </p>
+                <p className="mb-3 fs-5">
+                  Os prazos variam de <strong>7 a 30 dias úteis</strong>, de acordo com o tamanho e quantidade. Encomende
+                  com antecedência para não correr riscos.
+                </p>
+                <p className="mb-3 fs-5">
+                  Disponibilizo <strong>retirada no local</strong> ou <strong>entrega</strong> (taxa por conta do cliente).
+                </p>
                 <p className="mb-4 fs-5">
-                  Me segue nas redes sociais, vai que o seu pedido vira destaque nos stories? 😄
+                  Teve uma ideia incrível que não tá no catálogo? Me chama nas redes sociais e conta tudinho! 
+                  Quanto mais detalhes, mais fácil transformar seu sonho em crochê.
+                </p>
+
+
+                <p className="mb-4 fs-5">
+                  Me segue nas redes sociais, vai que o seu pedido vira destaque nos stories?😄
                 </p>
 
                 <div className="d-flex justify-content-center gap-4">
