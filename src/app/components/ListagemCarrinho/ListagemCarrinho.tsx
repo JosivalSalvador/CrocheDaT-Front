@@ -13,13 +13,13 @@ export default function ListagemCarrinho() {
         {carrinho.length > 0 ? (
           <div className="d-flex flex-column gap-3">
             {carrinho.map((item) => (
-              <div key={item.id} className="card shadow-sm pt-1 pb-2 pe-1 ps-1">
+              <div key={item.id} className="card shadow-sm pt-1 pb-2 pe-3 ps-3">
                 <ItemCarrinho itemCarrinho={item} />
               </div>
             ))}
           </div>
         ) : (
-          <p className="text-muted">Seu carrinho está vazio.11111</p>
+          <p className="text-muted">Seu carrinho está vazio.</p>
         )}
       </div>
 
