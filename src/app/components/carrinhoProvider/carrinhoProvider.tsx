@@ -65,9 +65,10 @@ export function CarrinhoProvider({ children }: { children: ReactNode }) {
       return [...prev, { ...produto, quantidade: 1 }];
     });
 
-    jaExiste
-      ? toast.info("Quantidade aumentada no carrinho.")
-      : toast.success("Produto adicionado ao carrinho!");
+    if (!jaExiste) {
+      toast.success("Produto adicionado ao carrinho!");
+    }
+
   };
 
 
@@ -79,7 +80,6 @@ export function CarrinhoProvider({ children }: { children: ReactNode }) {
     if (!item) return;
 
     if (item.quantidade > 1) {
-      toast.info("Quantidade reduzida no carrinho.");
       setCarrinho((prev) =>
         prev.map((produto) =>
           produto.id === id
