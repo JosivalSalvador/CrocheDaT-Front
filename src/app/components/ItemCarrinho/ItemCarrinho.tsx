@@ -49,12 +49,12 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
           <small className="text-muted d-block mb-4 text-truncate">
             {itemCarrinho.category.name}
           </small>
+          <small className="fw-bold">
+            R$ {itemCarrinho.price} × {quantidade} ={" "}
+            R$ {(itemCarrinho.price * quantidade).toFixed(2)}
+          </small>
         </div>
 
-        <small className="fw-bold">
-          R$ {itemCarrinho.price} × {quantidade} ={" "}
-          R$ {(itemCarrinho.price * quantidade).toFixed(2)}
-        </small>
       </div>
 
       {/* Botões → no mobile (order-3) ficam abaixo; no desktop (order-sm-3 ms-sm-auto) vão pra direita */}
