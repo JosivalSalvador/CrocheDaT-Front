@@ -19,12 +19,7 @@ export default function ItemCarrinho({ itemCarrinho }: ItemCarrinhoProps) {
 
   return (
     <div
-      className="d-flex flex-wrap align-items-center w-100 p-2"
-      style={{
-        minHeight: "100px",
-        border: "1px solid #eee",
-        borderRadius: "8px",
-      }}
+      className="d-flex flex-wrap align-items-center w-100"
     >
       {/* Imagem */}
       <div
