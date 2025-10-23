@@ -2,6 +2,6 @@ import axios from "axios";
 
 
 export const produtosApi = axios.create({
-    baseURL: "https://back-8atrh3x8.b4a.run/v1",
+    baseURL: "https://crochedat.zeabur.app/v1",
     /*baseURL: "https://crochedat-back.onrender.com/v1",*/
 });
